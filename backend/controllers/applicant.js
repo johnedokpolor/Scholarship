@@ -4,13 +4,22 @@ import { Applicant } from "../models/applicant.js";
 // @desc   Create Applicant
 // @route  POST /api/apply
 const createApplicant = async (req, res) => {
-  const { name, email, number, haveLaptop, hearAboutUs, referredBy, reason } =
-    req.body;
+  const {
+    name,
+    email,
+    number,
+    institution,
+    haveLaptop,
+    hearAboutUs,
+    referredBy,
+    reason,
+  } = req.body;
   try {
     if (
       !name ||
       !email ||
       !number ||
+      !institution ||
       !haveLaptop ||
       !hearAboutUs ||
       !referredBy ||
@@ -30,6 +39,7 @@ const createApplicant = async (req, res) => {
       name,
       email,
       number,
+      institution,
       haveLaptop,
       hearAboutUs,
       referredBy,

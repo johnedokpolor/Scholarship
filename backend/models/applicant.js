@@ -12,6 +12,10 @@ const applicantSchema = new mongoose.Schema(
       required: true,
     },
     number: {
+      type: Number,
+      required: true,
+    },
+    institution: {
       type: String,
       required: true,
     },
