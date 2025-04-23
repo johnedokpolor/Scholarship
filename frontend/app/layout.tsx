@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
+import { Toaster } from "react-hot-toast";
 
 export const metadata: Metadata = {
   title: "Tech Scholarship",
@@ -13,7 +14,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`antialiased flex justify-center`}>{children}</body>
+      <body className={`antialiased flex justify-center`}>
+        <Toaster />
+        <div>{children}</div>
+      </body>
     </html>
   );
 }
