@@ -1,8 +1,9 @@
 "use client";
-import Image from "next/image";
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { FormEvent, useState } from "react";
 import axiosInstance from "@/utils/axiosInstance";
 import toast from "react-hot-toast";
+import { AxiosError } from "axios";
 
 export default function Home() {
   const [applicant, setApplicant] = useState({
@@ -21,7 +22,8 @@ export default function Home() {
     setApplicant({ ...applicant, [key]: value });
   };
   const handleSubmit = async (e: FormEvent) => {
-    console.log(applicant.number.length);
+    e.preventDefault();
+    setLoading(true);
     if (applicant.number.length !== 11) {
       toast.error("Please enter a valid 11 digit number");
     }
@@ -32,15 +34,19 @@ export default function Home() {
     ) {
       toast.error("Please select all dropdown fields");
     }
-    e.preventDefault();
-    setLoading(true);
+
     try {
-      const response = await axiosInstance.post("/apply", applicant);
-      console.log(response.data);
+      await axiosInstance.post("/apply", applicant);
+      toast.success("Application submitted successfully");
       setLoading(false);
       setIsApplied(true);
     } catch (error) {
-      console.log(error);
+      const axiosError = error as AxiosError<any>;
+      if (axiosError.message === "timeout of 10000ms exceeded") {
+        setLoading(false);
+        return toast.error("Request timed out, please try again");
+      }
+      toast.error(axiosError?.response?.data?.message || "An error occurred");
       setLoading(false);
     }
   };
@@ -48,12 +54,11 @@ export default function Home() {
     // opens url in a new window tab
     window.open(link, "_blank");
   };
-  console.log(applicant);
 
   return (
     <div>
       {isApplied ? (
-        <div className="flex items-center h-screen">
+        <div className="flex items-center justify-center h-screen">
           <div className=" text-center  bg-white max-w-[700px] rounded-md w-[90%] p-5">
             <h1 className="text-2xl font-bold">Congratulations🎉</h1>
             <p>
@@ -68,7 +73,7 @@ export default function Home() {
           className="flex flex-col gap-5 bg-white max-w-[700px] rounded-md w-[90%] p-5 m-5 "
         >
           <h1 className="font-bold text-2xl">
-            GLacademy's FRONTEND SCHOLARSHIP BOOTCAMP🎓🧑🏻‍💻
+            GLacademy&apos;s FRONTEND SCHOLARSHIP BOOTCAMP🎓🧑🏻‍💻
           </h1>
           <label className="text-base font-semibold">
             {" "}
@@ -213,7 +218,7 @@ export default function Home() {
             <input type="checkbox" className="mr-2" required />
             <label>
               I confirm that I have reviewed and verified the accuracy of the
-              information provided
+              information provided.
             </label>
           </div>
           <button className="bg-blue-700 px-3 py-2 cursor-pointer text-white rounded">

@@ -7,13 +7,12 @@ import applicantRoutes from "./routes/applicant.js";
 const app = express();
 const port = process.env.PORT;
 
+// CORS Policy Middleware
+app.use(cors());
 // JSON Parser Middleware
 app.use(express.json());
 // connect to the database
 await connectDB();
-
-// CORS Policy Middleware
-app.use(cors());
 
 app.use("/api", applicantRoutes);
 app.listen(port, async () => {

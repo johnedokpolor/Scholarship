@@ -28,11 +28,18 @@ const createApplicant = async (req, res) => {
       return res.status(400).json({ message: "All fields are required" });
     }
 
-    const applicantAlreadyExists = await Applicant.findOne({ email });
-    if (applicantAlreadyExists) {
+    const emailAlreadyExists = await Applicant.findOne({ email });
+    if (emailAlreadyExists) {
       return res.status(400).json({
         success: false,
-        message: "You've already applied for the scholarship",
+        message: "Email already exists",
+      });
+    }
+    const numberAlreadyExists = await Applicant.findOne({ number });
+    if (numberAlreadyExists) {
+      return res.status(400).json({
+        success: false,
+        message: "Number already exists",
       });
     }
     const applicant = new Applicant({
@@ -86,27 +93,32 @@ const deleteApplicant = async (req, res) => {
     throw new Error(error.message);
   }
 };
-// @desc   Verify Applicant
-// @route  PATCH /api/verify
-const verifyApplicant = async (req, res) => {
+// @desc   Validate Applicant
+// @route  PATCH /api/validate
+const validateApplicant = async (req, res) => {
   const { email } = req.body;
   try {
-    // attempt to find and verify the Applicant
+    // attempt to find and validate the Applicant
     const applicant = await Applicant.findOne({ email });
     if (!applicant) {
       return res.status(404).json({
         success: false,
-        message: "You didn't apply for the bootcamp, try another email",
+        message: "Email not found",
       });
     }
-
+    if (applicant.paid) {
+      return res.status(400).json({
+        success: false,
+        message: "You're already validated",
+      });
+    }
     applicant.paid = true;
     applicant.save();
 
     // send verification email
     res
       .status(200)
-      .json({ success: true, message: "Applicant verified successfully" });
+      .json({ success: true, message: "You've been validated successfully" });
   } catch (error) {
     throw new Error(error.message);
   }
@@ -130,6 +142,6 @@ export {
   createApplicant,
   getApplicants,
   deleteApplicant,
-  verifyApplicant,
+  validateApplicant,
   getAderojuApplicant,
 };
