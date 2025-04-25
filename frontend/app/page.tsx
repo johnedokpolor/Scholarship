@@ -63,7 +63,8 @@ export default function Home() {
             <h1 className="text-2xl font-bold">Congratulations🎉</h1>
             <p>
               You successfully applied for the scholarship, an application mail
-              will be sent to you shortly.📧
+              will be sent to you shortly.📧 Please check your spam folder if
+              you don&apos;t see it in your inbox.🔍 <br />
             </p>
           </div>
         </div>
@@ -175,7 +176,7 @@ export default function Home() {
               <option value="Mr Aderoju">Mr Aderoju</option>
               <option value="Mr Nuhu">Mr Nuhu</option>
               <option value="Mrs Abdulfattah">Mrs Abdulfattah</option>
-              <option value="Mrs Joy Konyeha">Mrs Joy Konyeha</option>
+              <option value="Joy Konyeha">Joy Konyeha</option>
               <option value="Other">Other</option>
             </select>
           </label>

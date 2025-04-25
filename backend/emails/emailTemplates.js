@@ -54,7 +54,7 @@ export const APPLICATION_EMAIL_TEMPLATE = `
       <p>Hi <strong>{APPLICANT}</strong>,</p>
       <p>
         ✅ Thank you for applying to our
-        <strong>FRONTEND SCHOLARSHIP BOOTCAMP</strong>! We're thrilled to see
+        <strong>FRONTEND SCHOLARSHIP BOOTCAMP</strong>! We're filled with joy to see
         your passion for software development and to have your application in
         our review queue.
       </p>
