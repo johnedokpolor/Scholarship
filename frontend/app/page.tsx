@@ -163,7 +163,7 @@ export default function Home() {
           </label>
           <label className="text-base font-semibold">
             {" "}
-            Referral Code, select "OTHER" if none <br />
+            Referral Code, select &quot;OTHER&quot; if none <br />
             <select
               className="border w-full font-medium outline-0 rounded border-black px-2 py-2"
               value={applicant.referredBy}

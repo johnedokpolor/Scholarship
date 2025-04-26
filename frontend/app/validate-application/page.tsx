@@ -3,7 +3,7 @@
 import axiosInstance from "@/utils/axiosInstance";
 import { FormEvent, useState } from "react";
 import toast from "react-hot-toast";
-import progress from "../public/progress.png";
+import progress from "../../public/progress.png";
 import Image from "next/image";
 
 const Page = () => {
