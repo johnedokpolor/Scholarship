@@ -4,7 +4,6 @@ import { FormEvent, useState } from "react";
 import axiosInstance from "@/utils/axiosInstance";
 import toast from "react-hot-toast";
 import progress from "../public/progress.png";
-import { AxiosError } from "axios";
 import Image from "next/image";
 
 export default function Home() {

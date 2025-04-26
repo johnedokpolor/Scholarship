@@ -1,9 +1,10 @@
 "use client";
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import axiosInstance from "@/utils/axiosInstance";
-import { AxiosError } from "axios";
 import { FormEvent, useState } from "react";
 import toast from "react-hot-toast";
+import progress from "../public/progress.png";
+import Image from "next/image";
 
 const Page = () => {
   const [email, setEmail] = useState("");
@@ -43,7 +44,7 @@ const Page = () => {
           />
         </label>
         <button className="bg-blue-700 px-3 py-2 cursor-pointer text-white rounded">
-          {loading ? "Validating..." : "Validate"}
+          {loading ? <Image src={progress} alt="spinner" /> : "Validate"}
         </button>
       </form>
     </div>
