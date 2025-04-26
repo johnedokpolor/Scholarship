@@ -32,14 +32,16 @@ const createApplicant = async (req, res) => {
     if (emailAlreadyExists) {
       return res.status(400).json({
         success: false,
-        message: "Email already exists",
+        message:
+          "This email has applied for the bootcamp already, please try another email.",
       });
     }
     const numberAlreadyExists = await Applicant.findOne({ number });
     if (numberAlreadyExists) {
       return res.status(400).json({
         success: false,
-        message: "Number already exists",
+        message:
+          "This number has applied for the bootcamp already, please try another number.",
       });
     }
     const applicant = new Applicant({
@@ -103,7 +105,8 @@ const validateApplicant = async (req, res) => {
     if (!applicant) {
       return res.status(404).json({
         success: false,
-        message: "Email not found",
+        message:
+          "This email didn't apply for the bootcamp, please try another email.",
       });
     }
     if (applicant.paid) {
@@ -113,6 +116,7 @@ const validateApplicant = async (req, res) => {
       });
     }
     applicant.paid = true;
+
     applicant.save();
 
     // send verification email

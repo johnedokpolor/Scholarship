@@ -14,17 +14,17 @@ const Page = () => {
     };
     fetchApplicants();
   }, []);
-  const aderoju = applicants.filter(
-    (applicant: any) => applicant.referredBy === "Mr Aderoju"
+  const femart = applicants.filter(
+    (applicant: any) => applicant.referredBy === "FEMart"
   );
   return (
     <div className="space-y-3">
       <div className="bg-white text-center p-3 rounded-lg">
         <span className="font-bold">No Of Applicants: </span>
-        {aderoju.length} applicants
+        {femart.length} applicants
       </div>
       <div className="flex flex-wrap justify-center gap-4 ">
-        {aderoju.map((applicant: any) => (
+        {femart.map((applicant: any) => (
           <div
             key={applicant._id}
             className="bg-white max-w-md w-[90%] space-y-3 rounded-md p-5"

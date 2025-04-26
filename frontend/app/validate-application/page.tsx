@@ -17,10 +17,9 @@ const Page = () => {
       toast.success(response.data.message);
       setEmail("");
       setLoading(false);
-    } catch (error) {
-      const axiosError = error as AxiosError<any>;
+    } catch (error: any) {
       console.log(error);
-      toast.error(axiosError?.response?.data?.message);
+      toast.error(error?.response?.data?.message);
       setLoading(false);
     }
   };

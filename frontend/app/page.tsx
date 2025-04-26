@@ -3,7 +3,9 @@
 import { FormEvent, useState } from "react";
 import axiosInstance from "@/utils/axiosInstance";
 import toast from "react-hot-toast";
+import progress from "../public/progress.png";
 import { AxiosError } from "axios";
+import Image from "next/image";
 
 export default function Home() {
   const [applicant, setApplicant] = useState({
@@ -40,13 +42,12 @@ export default function Home() {
       toast.success("Application submitted successfully");
       setLoading(false);
       setIsApplied(true);
-    } catch (error) {
-      const axiosError = error as AxiosError<any>;
-      if (axiosError.message === "timeout of 10000ms exceeded") {
+    } catch (error: any) {
+      if (error.message === "timeout of 10000ms exceeded") {
         setLoading(false);
         return toast.error("Request timed out, please try again");
       }
-      toast.error(axiosError?.response?.data?.message || "An error occurred");
+      toast.error(error?.response?.data?.message || "An error occurred");
       setLoading(false);
     }
   };
@@ -62,9 +63,9 @@ export default function Home() {
           <div className=" text-center  bg-white max-w-[700px] rounded-md w-[90%] p-5">
             <h1 className="text-2xl font-bold">Congratulations🎉</h1>
             <p>
-              You successfully applied for the scholarship, an application mail
-              will be sent to you shortly.📧 Please check your spam folder if
-              you don&apos;t see it in your inbox.🔍 <br />
+              You&apos;ve successfully applied for the scholarship, an
+              application mail will be sent to you shortly.📧 Please check your
+              spam folder if you don&apos;t see it in your inbox.🔍 <br />
             </p>
           </div>
         </div>
@@ -78,7 +79,7 @@ export default function Home() {
           </h1>
           <label className="text-base font-semibold">
             {" "}
-            Name <br />
+            Full Name <br />
             <input
               type="text"
               className="border w-full font-medium outline-0 rounded border-black px-2 py-2"
@@ -163,7 +164,7 @@ export default function Home() {
           </label>
           <label className="text-base font-semibold">
             {" "}
-            Who referred you? <br />
+            Referral Code, select "OTHER" if none <br />
             <select
               className="border w-full font-medium outline-0 rounded border-black px-2 py-2"
               value={applicant.referredBy}
@@ -173,11 +174,10 @@ export default function Home() {
               required
             >
               <option>--Please choose an option--</option>
-              <option value="Mr Aderoju">Mr Aderoju</option>
-              <option value="Mr Nuhu">Mr Nuhu</option>
-              <option value="Mrs Abdulfattah">Mrs Abdulfattah</option>
-              <option value="Joy Konyeha">Joy Konyeha</option>
-              <option value="Other">Other</option>
+              <option value="ADEROJU">ADEROJU</option>
+              <option value="FEMart">FEMart</option>
+              <option value="ADURA">ADURA</option>
+              <option value="OTHER">OTHER</option>
             </select>
           </label>
           <label className="text-base font-semibold">
@@ -222,8 +222,16 @@ export default function Home() {
               information provided.
             </label>
           </div>
-          <button className="bg-blue-700 px-3 py-2 cursor-pointer text-white rounded">
-            {loading ? "Applying..." : "Apply"}
+          <button className="bg-blue-700 px-3 py-2  cursor-pointer text-white rounded">
+            {loading ? (
+              <Image
+                src={progress}
+                alt="Spinner"
+                className="animate-spin size-5 mx-auto text-white text-center"
+              />
+            ) : (
+              "Apply"
+            )}
           </button>
         </form>
       )}

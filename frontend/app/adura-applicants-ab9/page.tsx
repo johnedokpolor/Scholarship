@@ -14,15 +14,17 @@ const Page = () => {
     };
     fetchApplicants();
   }, []);
-
+  const adura = applicants.filter(
+    (applicant: any) => applicant.referredBy === "ADURA"
+  );
   return (
     <div className="space-y-3">
       <div className="bg-white text-center p-3 rounded-lg">
         <span className="font-bold">No Of Applicants: </span>
-        {applicants.length} applicants
+        {adura.length} applicants
       </div>
       <div className="flex flex-wrap justify-center gap-4 ">
-        {applicants.map((applicant: any) => (
+        {adura.map((applicant: any) => (
           <div
             key={applicant._id}
             className="bg-white max-w-md w-[90%] space-y-3 rounded-md p-5"
