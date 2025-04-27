@@ -5,6 +5,7 @@ import axiosInstance from "@/utils/axiosInstance";
 import toast from "react-hot-toast";
 import progress from "../public/progress.png";
 import Image from "next/image";
+import Link from "next/link";
 
 export default function Home() {
   const [applicant, setApplicant] = useState({
@@ -42,6 +43,7 @@ export default function Home() {
       setLoading(false);
       setIsApplied(true);
     } catch (error: any) {
+      console.log(error);
       if (error.message === "timeout of 10000ms exceeded") {
         setLoading(false);
         return toast.error("Request timed out, please try again");
@@ -62,9 +64,16 @@ export default function Home() {
           <div className=" text-center  bg-white max-w-[700px] rounded-md w-[90%] p-5">
             <h1 className="text-2xl font-bold">Congratulations🎉</h1>
             <p>
-              You&apos;ve successfully applied for the scholarship, an
-              application mail will be sent to you shortly.📧 Please check your
-              spam folder if you don&apos;t see it in your inbox.🔍 <br />
+              You&apos;ve successfully submitted your application, Please check
+              your spam folder for your application mail if you don&apos;t see
+              it in your inbox.🔍 <br />
+              While we review your application join our community for further
+              instructions.
+              <button className="px-3 py-2 mt-3 bg-blue-700 rounded text-white cursor-pointer">
+                <Link href="https://chat.whatsapp.com/E2lFh78iYeFDObMT6Z2FH7">
+                  Join Now
+                </Link>
+              </button>
             </p>
           </div>
         </div>
@@ -226,7 +235,7 @@ export default function Home() {
               <Image
                 src={progress}
                 alt="Spinner"
-                className="animate-spin size-5 mx-auto text-white text-center"
+                className="animate-spin size-5 mx-auto"
               />
             ) : (
               "Apply"

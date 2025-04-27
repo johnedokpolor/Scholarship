@@ -19,6 +19,11 @@ const Page = () => {
       setEmail("");
       setLoading(false);
     } catch (error: any) {
+      if (error.message) {
+        toast.error(error.message);
+        setLoading(false);
+        return;
+      }
       console.log(error);
       toast.error(error?.response?.data?.message);
       setLoading(false);
@@ -44,7 +49,15 @@ const Page = () => {
           />
         </label>
         <button className="bg-blue-700 px-3 py-2 cursor-pointer text-white rounded">
-          {loading ? <Image src={progress} alt="spinner" /> : "Validate"}
+          {loading ? (
+            <Image
+              src={progress}
+              alt="spinner"
+              className="mx-auto animate-spin"
+            />
+          ) : (
+            "Validate"
+          )}
         </button>
       </form>
     </div>
