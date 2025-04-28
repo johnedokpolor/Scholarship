@@ -3,6 +3,7 @@ import "dotenv/config";
 import cors from "cors";
 import { connectDB } from "./db/connectDB.js";
 import applicantRoutes from "./routes/applicant.js";
+import partnerRoutes from "./routes/partner.js";
 
 const app = express();
 const port = process.env.PORT;
@@ -14,7 +15,7 @@ app.use(express.json());
 // connect to the database
 await connectDB();
 
-app.use("/api", applicantRoutes);
+app.use("/api", applicantRoutes, partnerRoutes);
 app.listen(port, async () => {
   console.log("Server is listening on " + port + "...");
 });

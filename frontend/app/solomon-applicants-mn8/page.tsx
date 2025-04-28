@@ -9,20 +9,20 @@ import progress from "../../public/progress.png";
 
 const Page = () => {
   const [applicants, setApplicants] = useState([]);
-  const [aderoju, setAderoju] = useState([]);
+  const [solomon, setSolomon] = useState([]);
   const [paid, setPaid] = useState(false);
   const [loading, setLoading] = useState(true);
 
-  const paidApplicants = aderoju.filter((applicant: any) => applicant.paid);
+  const paidApplicants = solomon.filter((applicant: any) => applicant.paid);
 
   useEffect(() => {
     const fetchApplicants = async () => {
       const response = await axiosInstance.get("/api/apply");
 
       setApplicants(response.data.applicants);
-      setAderoju(
+      setSolomon(
         response.data.applicants.filter(
-          (applicant: any) => applicant.referredBy === "ADEROJU"
+          (applicant: any) => applicant.referredBy === "SOLOMON"
         )
       );
     };
@@ -32,13 +32,13 @@ const Page = () => {
   const togglePaid = () => {
     setPaid(!paid);
     if (paid) {
-      return setAderoju(
+      return setSolomon(
         applicants.filter(
-          (applicant: any) => applicant.referredBy === "ADEROJU"
+          (applicant: any) => applicant.referredBy === "SOLOMON"
         )
       );
     }
-    setAderoju(paidApplicants);
+    setSolomon(paidApplicants);
   };
 
   return (
@@ -46,9 +46,9 @@ const Page = () => {
       <div className="bg-white text-center flex gap-3 items-center justify-center p-3 rounded-lg">
         <div>
           <span className="font-bold">
-            No Of Aderoju&apos;s {paid ? "Paid" : ""} Applicants:{" "}
+            No Of Solomon&apos;s {paid ? "Paid" : ""} Applicants:{" "}
           </span>
-          {aderoju.length} applicants
+          {solomon.length} applicants
         </div>
         <button
           onClick={togglePaid}
@@ -67,7 +67,7 @@ const Page = () => {
         </div>
       ) : (
         <div className="flex flex-wrap justify-center gap-4 ">
-          {aderoju.map((applicant: any) => (
+          {solomon.map((applicant: any) => (
             <ApplicantCard key={applicant._id} applicant={applicant} />
           ))}
         </div>

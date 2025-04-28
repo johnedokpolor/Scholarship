@@ -122,3 +122,98 @@ export const APPLICATION_EMAIL_TEMPLATE = `
   </body>
 </html>
 `;
+export const PARTNERSHIP_EMAIL_TEMPLATE = `
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Partnership Confirmation</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        color: #333;
+        line-height: 1.6;
+        background-color: #f4f4f4;
+      }
+      .container {
+        width: full;
+        background-color:white; 
+        padding: 25px 10px;
+        margin: auto;
+        border-radius: 8px;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+      }
+      h1 {
+        color: #4caf50;
+      }
+      p {
+        margin-bottom: 16px;
+      }
+      .footer {
+        font-size: 12px;
+        color: #888;
+        margin-top: 40px;
+        text-align: center;
+        color: #888;
+      }
+      ul {
+        padding-left: 20px;
+      }
+      .join-link {
+        display: flex;
+        justify-content: center;
+        width: fit-content;
+        background-color: rgb(6, 85, 6);
+        color: white;
+        text-decoration: none;
+        padding: 10px;
+        border-radius: 7px;
+        margin: auto;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+    <h1>Partnership Confirmation 🎉</h1>
+      <p>Hi Partner <strong>{APPLICANT}</strong>,</p>
+      <p>
+        ✅ Thank you for partnering with us! We're filled with joy to collaborate and work together to create opportunities and make a lasting impact in the tech space.
+      </p>
+
+     
+      <p>
+        🔔 Moving forward these are the steps ahead:
+      </p>
+      <ul>
+        <li>You send the link to your applicants.</li>
+        <li>They apply for the scholarship using your unique refferal code "<b>{REFERRALCODE}</b>"</li>
+        <li>They secure their slot by making necessary payment.</li>
+        <li>You get credited within 7 days after classes begin.</li>
+      </ul>
+      <p>
+       💳 Your payment details are as follows:
+      </p>
+      <ul>
+        <li><b>Account Name: </b>{ACCOUNTNAME}</li>
+        <li><b>Account Number: </b>{ACCOUNTNUMBER}</li>
+        <li><b>Bank Name: </b>{BANKNAME}</li>
+      </ul>
+
+      <p>Have any questions? Feel free to contact us</p>
+
+      <p>
+        Wishing you all the best,
+        <br />
+        GLacademy Team.
+      </p>
+
+      <div class="footer">
+        <div>
+          <p>
+            This is an automated message, please do not reply to this email.
+          </p>
+        </div>
+    </div>
+  </body>
+</html>
+`;

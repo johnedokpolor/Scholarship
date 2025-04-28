@@ -3,20 +3,24 @@ import ApplicantCard from "@/components/ApplicantCard";
 /* eslint-disable @typescript-eslint/no-explicit-any */
 
 import axiosInstance from "@/utils/axiosInstance";
+import Image from "next/image";
 import React, { useEffect, useState } from "react";
+import progress from "../../public/progress.png";
 
 const Page = () => {
   const [applicants, setApplicants] = useState([]);
   const [allApplicants, setAllApplicants] = useState([]);
   const [paid, setPaid] = useState(false);
+  const [loading, setLoading] = useState(true);
   const paidApplicants = applicants.filter((applicant: any) => applicant.paid);
 
   useEffect(() => {
     const fetchApplicants = async () => {
-      const response = await axiosInstance.get("/apply");
+      const response = await axiosInstance.get("/api/apply");
 
       setApplicants(response.data.applicants);
       setAllApplicants(response.data.applicants);
+      setLoading(false);
     };
     fetchApplicants();
   }, []);
@@ -47,13 +51,25 @@ const Page = () => {
         </button>
       </div>
       <div className="flex flex-wrap justify-center gap-4 ">
-        {allApplicants.map((applicant: any) => (
-          <ApplicantCard
-            key={applicant._id}
-            applicant={applicant}
-            total={true}
-          />
-        ))}
+        {loading ? (
+          <div className="bg-black rounded-lg">
+            <Image
+              src={progress}
+              alt="spinner"
+              className="animate-spin size-30  m-auto "
+            />
+          </div>
+        ) : (
+          <div className="flex flex-wrap justify-center gap-4 ">
+            {allApplicants.map((applicant: any) => (
+              <ApplicantCard
+                key={applicant._id}
+                applicant={applicant}
+                total={true}
+              />
+            ))}
+          </div>
+        )}
       </div>
     </div>
   );

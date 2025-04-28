@@ -17,7 +17,7 @@ const Page = () => {
 
   useEffect(() => {
     const fetchApplicants = async () => {
-      const response = await axiosInstance.get("/apply");
+      const response = await axiosInstance.get("/api/apply");
 
       setApplicants(response.data.applicants);
       setFemart(
@@ -56,11 +56,13 @@ const Page = () => {
         </button>
       </div>
       {loading ? (
-        <Image
-          src={progress}
-          alt="spinner"
-          className="animate-spin size-30  m-auto "
-        />
+        <div className="bg-black rounded-lg">
+          <Image
+            src={progress}
+            alt="spinner"
+            className="animate-spin size-30  m-auto "
+          />
+        </div>
       ) : (
         <div className="flex flex-wrap justify-center gap-4 ">
           {femart.map((applicant: any) => (

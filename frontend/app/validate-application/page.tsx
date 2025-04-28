@@ -13,7 +13,7 @@ const Page = () => {
     e.preventDefault();
     setLoading(true);
     try {
-      const response = await axiosInstance.patch("/validate", { email });
+      const response = await axiosInstance.patch("/api/validate", { email });
       console.log(response);
       toast.success(response.data.message);
       setEmail("");
