@@ -5,6 +5,7 @@ import axiosInstance from "@/utils/axiosInstance";
 import toast from "react-hot-toast";
 import progress from "../../public/progress.png";
 import Image from "next/image";
+import Link from "next/link";
 
 export default function Home() {
   const [partner, setPartner] = useState({
@@ -25,7 +26,7 @@ export default function Home() {
     e.preventDefault();
     setLoading(true);
     if (partner.number.length !== 11) {
-      toast.error("Please enter a valid 11 digit number");
+      return toast.error("Please enter a valid 11 digit number");
     }
 
     try {
@@ -54,7 +55,12 @@ export default function Home() {
               You&apos;ve successfully submitted your application, Please check
               your spam folder for your application mail if you don&apos;t see
               it in your inbox.🔍
+              <br />
+              Have any questions? Reach Out😄
             </p>
+            <button className="px-3 py-2 mt-3 bg-blue-700 rounded text-white cursor-pointer">
+              <Link href="https://wa.link/9z03do">Reach Out</Link>
+            </button>
           </div>
         </div>
       ) : (

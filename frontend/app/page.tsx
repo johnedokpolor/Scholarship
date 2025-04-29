@@ -18,6 +18,25 @@ export default function Home() {
     referredBy: "",
     reason: "",
   });
+
+  const partners = [
+    "ADEROJU",
+    "FEMart",
+    "ADURA",
+    "SOLOMON",
+    "RUKAYAT",
+    "FAITHCITY",
+    "KUTU",
+    "PRESHDEV",
+    "ALASELA",
+    "COOLEST",
+    "IVANOVICH",
+    "MOTUNRAYO",
+    "DANCLEM",
+    "VICKEYJAY",
+
+    "OTHER",
+  ];
   const [loading, setLoading] = useState(false);
   const [isApplied, setIsApplied] = useState(false);
   const handleChange = (key: string, value: string) => {
@@ -167,6 +186,7 @@ export default function Home() {
               <option value="WhatsApp">WhatsApp</option>
               <option value="Instagram">Instagram</option>
               <option value="Twitter">Twitter</option>
+              <option value="TikTok">TikTok</option>
               <option value="Other">Other</option>
             </select>
           </label>
@@ -182,14 +202,11 @@ export default function Home() {
               required
             >
               <option>--Please choose an option--</option>
-              <option value="ADEROJU">ADEROJU</option>
-              <option value="FEMart">FEMart</option>
-              <option value="ADURA">ADURA</option>
-              <option value="SOLOMON">SOLOMON</option>
-              <option value="RUKAYAT">RUKAYAT</option>
-              <option value="FAITHCITY">FAITHCITY</option>
-              <option value="KUTU">KUTU</option>
-              <option value="OTHER">OTHER</option>
+              {partners.map((partner) => (
+                <option key={partner} value={partner}>
+                  {partner}
+                </option>
+              ))}
             </select>
           </label>
           <label className="text-base font-semibold">

@@ -1,6 +1,9 @@
 // @desc   Create Applicant
 
-import { sendPartnershipEmail } from "../emails/emails.js";
+import {
+  sendPartnershipEmail,
+  sendPartnershipReportEmail,
+} from "../emails/emails.js";
 import { Partner } from "../models/partner.js";
 
 // @desc   Get All Partners
@@ -46,6 +49,7 @@ export const createPartner = async (req, res) => {
     });
 
     sendPartnershipEmail(email, name, referralCode, accountNumber, bankName);
+    sendPartnershipReportEmail(email, name);
     await partner.save();
     res.status(201).json({
       success: true,

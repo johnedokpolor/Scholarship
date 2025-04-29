@@ -4,7 +4,6 @@ import axiosInstance from "@/utils/axiosInstance";
 import toast from "react-hot-toast";
 
 const PartnerCard = ({ partner }: { partner: any }) => {
-
   const deletePartner = async () => {
     try {
       const response = await axiosInstance.delete(
@@ -12,8 +11,8 @@ const PartnerCard = ({ partner }: { partner: any }) => {
       );
       console.log(response.data);
       toast.success("Partner deleted successfully");
-      window.location.href="/total-partners"
-    } catch (error:any) {
+      window.location.href = "/total-partners-n5l";
+    } catch (error: any) {
       console.log(error.message);
     }
   };

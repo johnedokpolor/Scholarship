@@ -2,6 +2,7 @@ import nodemailer from "nodemailer";
 import {
   APPLICATION_EMAIL_TEMPLATE,
   PARTNERSHIP_EMAIL_TEMPLATE,
+  PARTNERSHIP_REPORT_EMAIL_TEMPLATE,
 } from "./emailTemplates.js";
 
 var transporter = nodemailer.createTransport({
@@ -44,6 +45,24 @@ export const sendPartnershipEmail = (
       .replace("{BANKNAME}", bankName)
       .replace("{ACCOUNTNAME}", name)
       .replace("{ACCOUNTNUMBER}", accountNumber),
+  };
+  transporter.sendMail(mailOptions, function (error, info) {
+    if (error) {
+      console.log(error);
+    } else {
+      console.log("Email sent: " + info.response);
+    }
+  });
+};
+export const sendPartnershipReportEmail = (email, name) => {
+  var mailOptions = {
+    from: `"GLacademy" ${process.env.EMAIL}`,
+    to: `"GLacademy" "johnedokpolor@gmail.com"`,
+    subject: "Partnership Report",
+    html: PARTNERSHIP_REPORT_EMAIL_TEMPLATE.replace("{NAME}", name).replace(
+      "{EMAIL}",
+      email
+    ),
   };
   transporter.sendMail(mailOptions, function (error, info) {
     if (error) {

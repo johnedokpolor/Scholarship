@@ -199,13 +199,89 @@ export const PARTNERSHIP_EMAIL_TEMPLATE = `
         <li><b>Bank Name: </b>{BANKNAME}</li>
       </ul>
 
-      <p>Have any questions? Feel free to contact us</p>
+      <p>Have any questions? Feel free to contact us.</p>
 
       <p>
         Wishing you all the best,
         <br />
         GLacademy Team.
       </p>
+
+      <div class="footer">
+        <div>
+          <p>
+            This is an automated message, please do not reply to this email.
+          </p>
+        </div>
+    </div>
+  </body>
+</html>
+`;
+export const PARTNERSHIP_REPORT_EMAIL_TEMPLATE = `
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Partnership Report</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        color: #333;
+        line-height: 1.6;
+        background-color: #f4f4f4;
+      }
+      .container {
+        width: full;
+        background-color:white; 
+        padding: 25px 10px;
+        margin: auto;
+        border-radius: 8px;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+      }
+      h1 {
+        color: #4caf50;
+      }
+      p {
+        margin-bottom: 16px;
+      }
+      .footer {
+        font-size: 12px;
+        color: #888;
+        margin-top: 40px;
+        text-align: center;
+        color: #888;
+      }
+      ul {
+        padding-left: 20px;
+      }
+      .join-link {
+        display: flex;
+        justify-content: center;
+        width: fit-content;
+        background-color: rgb(6, 85, 6);
+        color: white;
+        text-decoration: none;
+        padding: 10px;
+        border-radius: 7px;
+        margin: auto;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+    <h1>Partnership Report</h1>
+      <p>Hi Partner <strong>Jason</strong>,</p>
+      <p>
+        ✅ A new partner has sent his application with details as follows:
+      </p>
+      <ul>
+        <li><b>Name: </b>{NAME}</li>
+        <li><b>Email: </b>{EMAIL}</li>
+      </ul>
+
+      <a href="https://techscholarship.vercel.app/total-partners-n5l" classname="join-link">View Partner</a>
+
+    
 
       <div class="footer">
         <div>
