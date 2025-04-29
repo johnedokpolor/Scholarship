@@ -59,7 +59,7 @@ export default function Home() {
               Have any questions? Reach Out😄
             </p>
             <button className="px-3 py-2 mt-3 bg-blue-700 rounded text-white cursor-pointer">
-              <Link href="https://wa.link/9z03do">Reach Out</Link>
+              <Link href="https://wa.link/rn39vd">Reach Out</Link>
             </button>
           </div>
         </div>
