@@ -54,6 +54,10 @@ const Page = () => {
         >
           View {paid ? "All" : "Paid"} Applicants
         </button>
+        <div>
+          <span className="font-bold">Amount Generated: </span> ₦
+          {350 * paidApplicants.length}
+        </div>
       </div>
       {loading ? (
         <div className="bg-black rounded-lg">

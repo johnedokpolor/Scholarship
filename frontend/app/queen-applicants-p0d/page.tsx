@@ -9,20 +9,20 @@ import progress from "../../public/progress.png";
 
 const Page = () => {
   const [applicants, setApplicants] = useState([]);
-  const [rukuyat, setRukayat] = useState([]);
+  const [queen, setQueen] = useState([]);
   const [paid, setPaid] = useState(false);
   const [loading, setLoading] = useState(true);
 
-  const paidApplicants = rukuyat.filter((applicant: any) => applicant.paid);
+  const paidApplicants = queen.filter((applicant: any) => applicant.paid);
 
   useEffect(() => {
     const fetchApplicants = async () => {
       const response = await axiosInstance.get("/api/apply");
 
       setApplicants(response.data.applicants);
-      setRukayat(
+      setQueen(
         response.data.applicants.filter(
-          (applicant: any) => applicant.referredBy === "RUKAYAT"
+          (applicant: any) => applicant.referredBy === "QUEEN"
         )
       );
     };
@@ -32,13 +32,11 @@ const Page = () => {
   const togglePaid = () => {
     setPaid(!paid);
     if (paid) {
-      return setRukayat(
-        applicants.filter(
-          (applicant: any) => applicant.referredBy === "RUKAYAT"
-        )
+      return setQueen(
+        applicants.filter((applicant: any) => applicant.referredBy === "QUEEN")
       );
     }
-    setRukayat(paidApplicants);
+    setQueen(paidApplicants);
   };
 
   return (
@@ -46,9 +44,9 @@ const Page = () => {
       <div className="bg-white text-center flex gap-3 items-center justify-center p-3 rounded-lg">
         <div>
           <span className="font-bold">
-            No Of Rukayat&apos;s {paid ? "Paid" : ""} Applicants:{" "}
+            No Of Queen&apos;s {paid ? "Paid" : ""} Applicants:{" "}
           </span>
-          {rukuyat.length} applicants
+          {queen.length} applicants
         </div>
         <button
           onClick={togglePaid}
@@ -71,7 +69,7 @@ const Page = () => {
         </div>
       ) : (
         <div className="flex flex-wrap justify-center gap-4 ">
-          {rukuyat.map((applicant: any) => (
+          {queen.map((applicant: any) => (
             <ApplicantCard key={applicant._id} applicant={applicant} />
           ))}
         </div>

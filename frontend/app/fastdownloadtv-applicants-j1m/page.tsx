@@ -9,20 +9,22 @@ import progress from "../../public/progress.png";
 
 const Page = () => {
   const [applicants, setApplicants] = useState([]);
-  const [rukuyat, setRukayat] = useState([]);
+  const [fastdownloadtv, setFastdownlaodtv] = useState([]);
   const [paid, setPaid] = useState(false);
   const [loading, setLoading] = useState(true);
 
-  const paidApplicants = rukuyat.filter((applicant: any) => applicant.paid);
+  const paidApplicants = fastdownloadtv.filter(
+    (applicant: any) => applicant.paid
+  );
 
   useEffect(() => {
     const fetchApplicants = async () => {
       const response = await axiosInstance.get("/api/apply");
 
       setApplicants(response.data.applicants);
-      setRukayat(
+      setFastdownlaodtv(
         response.data.applicants.filter(
-          (applicant: any) => applicant.referredBy === "RUKAYAT"
+          (applicant: any) => applicant.referredBy === "FASTDOWNLOADTV"
         )
       );
     };
@@ -32,13 +34,13 @@ const Page = () => {
   const togglePaid = () => {
     setPaid(!paid);
     if (paid) {
-      return setRukayat(
+      return setFastdownlaodtv(
         applicants.filter(
-          (applicant: any) => applicant.referredBy === "RUKAYAT"
+          (applicant: any) => applicant.referredBy === "FASTDOWNLOADTV"
         )
       );
     }
-    setRukayat(paidApplicants);
+    setFastdownlaodtv(paidApplicants);
   };
 
   return (
@@ -46,9 +48,9 @@ const Page = () => {
       <div className="bg-white text-center flex gap-3 items-center justify-center p-3 rounded-lg">
         <div>
           <span className="font-bold">
-            No Of Rukayat&apos;s {paid ? "Paid" : ""} Applicants:{" "}
+            No Of Fastdownloadtv&apos;s {paid ? "Paid" : ""} Applicants:{" "}
           </span>
-          {rukuyat.length} applicants
+          {fastdownloadtv.length} applicants
         </div>
         <button
           onClick={togglePaid}
@@ -71,7 +73,7 @@ const Page = () => {
         </div>
       ) : (
         <div className="flex flex-wrap justify-center gap-4 ">
-          {rukuyat.map((applicant: any) => (
+          {fastdownloadtv.map((applicant: any) => (
             <ApplicantCard key={applicant._id} applicant={applicant} />
           ))}
         </div>

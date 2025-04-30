@@ -34,6 +34,8 @@ export default function Home() {
     "MOTUNRAYO",
     "DANCLEM",
     "VICKEYJAY",
+    "FASTDOWNLOADTV",
+    "QUEEN",
 
     "OTHER",
   ];

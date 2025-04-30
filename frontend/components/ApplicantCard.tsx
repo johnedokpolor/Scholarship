@@ -2,7 +2,6 @@
 import axiosInstance from "@/utils/axiosInstance";
 import toast from "react-hot-toast";
 
-
 const ApplicantCard = ({
   applicant,
   total,
@@ -10,7 +9,6 @@ const ApplicantCard = ({
   applicant: any;
   total?: boolean;
 }) => {
-
   const deleteApplicant = async () => {
     try {
       const response = await axiosInstance.delete(
@@ -18,8 +16,8 @@ const ApplicantCard = ({
       );
       console.log(response.data);
       toast.success("Applicant deleted successfully");
-      window.location.href="/total-applicants-zq2"
-    } catch (error:any) {
+      window.location.href = "/total-applicants-zq2";
+    } catch (error: any) {
       console.log(error.message);
     }
   };
@@ -28,17 +26,19 @@ const ApplicantCard = ({
       key={applicant._id}
       className="bg-white relative max-w-md w-[90%] space-y-3 rounded-md p-5"
     >
-         <button
-        onClick={deleteApplicant}
-        className="bg-red-600 text-white absolute top-3 right-3 text-sm  cursor-pointer py-1 rounded-md px-3"
-      >
-        Delete
-      </button>
       {total && (
-        <p>
-          <span className="font-bold">Id:</span> {applicant._id}
-        </p>
+        <button
+          onClick={deleteApplicant}
+          className="bg-red-600 text-white absolute top-3 right-3 text-sm  cursor-pointer py-1 rounded-md px-3"
+        >
+          Delete
+        </button>
       )}
+
+      <p>
+        <span className="font-bold">Id:</span> {applicant._id}
+      </p>
+
       <p>
         <span className="font-bold">Full Name:</span> {applicant.name}
       </p>
