@@ -56,10 +56,10 @@ export default function Home() {
               your spam folder for your application mail if you don&apos;t see
               it in your inbox.🔍
               <br />
-              Have any questions? Reach Out😄
+              Contact us to get addded as partner.😄
             </p>
             <button className="px-3 py-2 mt-3 bg-blue-700 rounded text-white cursor-pointer">
-              <Link href="https://wa.link/rn39vd">Reach Out</Link>
+              <Link href="https://wa.link/rn39vd">Contact Us</Link>
             </button>
           </div>
         </div>
@@ -111,7 +111,7 @@ export default function Home() {
             <input
               type="text"
               className="border w-full font-medium outline-0 rounded border-black px-2 py-2"
-              placeholder="Input your unique referral code here"
+              placeholder="Create a Unique Referral Code (e.g. DBOSS)"
               onChange={({ target }) =>
                 handleChange("referralCode", target.value)
               }
@@ -125,7 +125,7 @@ export default function Home() {
             <input
               type="text"
               className="border w-full font-medium outline-0 rounded border-black px-2 py-2"
-              placeholder="Input your account number here"
+              placeholder="Input Your Account Number "
               onChange={({ target }) =>
                 handleChange("accountNumber", target.value)
               }
@@ -139,7 +139,7 @@ export default function Home() {
             <input
               type="text"
               className="border w-full font-medium outline-0 rounded border-black px-2 py-2"
-              placeholder="The Name of your Bank"
+              placeholder="Input Your Bank Name "
               onChange={({ target }) => handleChange("bankName", target.value)}
               value={partner.bankName}
               required

@@ -1,6 +1,6 @@
 "use client";
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { FormEvent, useState } from "react";
+import { FormEvent, useEffect, useState } from "react";
 import axiosInstance from "@/utils/axiosInstance";
 import toast from "react-hot-toast";
 import progress from "../public/progress.png";
@@ -18,29 +18,21 @@ export default function Home() {
     referredBy: "",
     reason: "",
   });
+  const [partners, setPartners] = useState<string[]>([]);
 
-  const partners = [
-    "ADEROJU",
-    "FEMart",
-    "ADURA",
-    "SOLOMON",
-    "RUKAYAT",
-    "FAITHCITY",
-    "KUTU",
-    "PRESHDEV",
-    "ALASELA",
-    "COOLEST",
-    "IVANOVICH",
-    "MOTUNRAYO",
-    "DANCLEM",
-    "VICKEYJAY",
-    "FASTDOWNLOADTV",
-    "QUEEN",
+  useEffect(() => {
+    const fetchApplicants = async () => {
+      const response = await axiosInstance.get("/api/partners");
 
-    "OTHER",
-  ];
+      setPartners(response.data.partners);
+      setLoading(false);
+    };
+    fetchApplicants();
+  }, []);
+
   const [loading, setLoading] = useState(false);
   const [isApplied, setIsApplied] = useState(false);
+  const referralCodes = partners.map((partner: any) => partner.referralCode);
   const handleChange = (key: string, value: string) => {
     setApplicant({ ...applicant, [key]: value });
   };
@@ -77,6 +69,8 @@ export default function Home() {
     // opens url in a new window tab
     window.open(link, "_blank");
   };
+
+  referralCodes.unshift("OTHER");
 
   return (
     <div>
@@ -204,9 +198,9 @@ export default function Home() {
               required
             >
               <option>--Please choose an option--</option>
-              {partners.map((partner) => (
-                <option key={partner} value={partner}>
-                  {partner}
+              {referralCodes.map((code) => (
+                <option key={code} value={String(code).toUpperCase()}>
+                  {String(code).toUpperCase()}
                 </option>
               ))}
             </select>

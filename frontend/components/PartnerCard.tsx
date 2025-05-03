@@ -19,7 +19,7 @@ const PartnerCard = ({ partner }: { partner: any }) => {
   return (
     <div
       key={partner._id}
-      className="bg-white relative  space-y-3 rounded-md p-5 pt-5"
+      className="bg-white relative w-[90%] max-w-md  space-y-3 rounded-md p-5 pt-5"
     >
       <button
         onClick={deletePartner}

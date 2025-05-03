@@ -22,7 +22,7 @@ const Page = () => {
       setApplicants(response.data.applicants);
       setFemart(
         response.data.applicants.filter(
-          (applicant: any) => applicant.referredBy === "FEMart"
+          (applicant: any) => applicant.referredBy === "FEMART"
         )
       );
     };
@@ -33,7 +33,7 @@ const Page = () => {
     setPaid(!paid);
     if (paid) {
       return setFemart(
-        applicants.filter((applicant: any) => applicant.referredBy === "FEMart")
+        applicants.filter((applicant: any) => applicant.referredBy === "FEMART")
       );
     }
     setFemart(paidApplicants);
@@ -44,7 +44,7 @@ const Page = () => {
       <div className="bg-white text-center flex gap-3 items-center justify-center p-3 rounded-lg">
         <div>
           <span className="font-bold">
-            No Of FEMart&apos;s {paid ? "Paid" : ""} Applicants:{" "}
+            No Of FEMART&apos;s {paid ? "Paid" : ""} Applicants:{" "}
           </span>
           {femart.length} applicants
         </div>
