@@ -31,7 +31,7 @@ export default function Home() {
   }, []);
 
   const [loading, setLoading] = useState(false);
-  const [isApplied, setIsApplied] = useState(false);
+  const [isApplied, setIsApplied] = useState(true);
   const referralCodes = partners.map((partner: any) => partner.referralCode);
   const handleChange = (key: string, value: string) => {
     setApplicant({ ...applicant, [key]: value });
@@ -77,33 +77,15 @@ export default function Home() {
       {partners && (
         <div>
           {isApplied ? (
-            // <div className="flex items-center justify-center h-screen">
-            //   <div className=" text-center  bg-white max-w-[700px] rounded-md w-[90%] p-5">
-            //     <h1 className="text-2xl font-bold">Opps..Oh.no😖</h1>
-            //     <p>
-            //       Thank you for your interest! Unfortunately, the application
-            //       period for this cohort has now closed. However, we’d love to
-            //       stay in touch — you can add your name to our waiting list to
-            //       be among the first to hear when applications open for the next
-            //       cohort. <br />
-            //       <button className="px-3 py-2 mt-3 bg-blue-700 rounded text-white cursor-pointer">
-            //         <Link href="https://chat.whatsapp.com/E2lFh78iYeFDObMT6Z2FH7">
-            //           Join Now
-            //         </Link>
-            //       </button>
-            //     </p>
-            //   </div>
-            // </div>
-
             <div className="flex items-center justify-center h-screen">
               <div className=" text-center  bg-white max-w-[700px] rounded-md w-[90%] p-5">
-                <h1 className="text-2xl font-bold">Congratulations🎉</h1>
+                <h1 className="text-2xl font-bold">Opps..Oh.no😖</h1>
                 <p>
-                  You&apos;ve successfully submitted your application, Please
-                  check your spam folder for your application mail if you
-                  don&apos;t see it in your inbox.🔍 <br />
-                  While we review your application join our community for
-                  further instructions.
+                  Thank you for your interest! Unfortunately, the application
+                  period for this cohort has now closed. However, we’d love to
+                  stay in touch — you can add your name to our waiting list to
+                  be among the first to hear when applications open for the next
+                  cohort. <br />
                   <button className="px-3 py-2 mt-3 bg-blue-700 rounded text-white cursor-pointer">
                     <Link href="https://chat.whatsapp.com/E2lFh78iYeFDObMT6Z2FH7">
                       Join Now
@@ -113,6 +95,23 @@ export default function Home() {
               </div>
             </div>
           ) : (
+            // <div className="flex items-center justify-center h-screen">
+            //   <div className=" text-center  bg-white max-w-[700px] rounded-md w-[90%] p-5">
+            //     <h1 className="text-2xl font-bold">Congratulations🎉</h1>
+            //     <p>
+            //       You&apos;ve successfully submitted your application, Please
+            //       check your spam folder for your application mail if you
+            //       don&apos;t see it in your inbox.🔍 <br />
+            //       While we review your application join our community for
+            //       further instructions.
+            //       <button className="px-3 py-2 mt-3 bg-blue-700 rounded text-white cursor-pointer">
+            //         <Link href="https://chat.whatsapp.com/E2lFh78iYeFDObMT6Z2FH7">
+            //           Join Now
+            //         </Link>
+            //       </button>
+            //     </p>
+            //   </div>
+            // </div>
             <form
               onSubmit={handleSubmit}
               className="flex flex-col gap-5 bg-white max-w-[700px] rounded-md w-[90%] p-5 m-5 "

@@ -31,7 +31,7 @@ const Page = () => {
     }
     setAllApplicants(paidApplicants);
   };
-  console.log(applicants);
+  console.log(applicants.map((applicant: any) => applicant.number));
   console.log(allApplicants);
 
   const sendReminder = async () => {
