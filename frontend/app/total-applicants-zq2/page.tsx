@@ -34,6 +34,18 @@ const Page = () => {
   console.log(applicants);
   console.log(allApplicants);
 
+  const sendReminder = async () => {
+    try {
+      const response = await axiosInstance.get("/api/reminder");
+      console.log(response.data);
+      if (response.status === 200) {
+        alert("Reminder sent successfully");
+      }
+    } catch (error: any) {
+      console.log(error.message);
+    }
+  };
+
   return (
     <div className="space-y-3">
       <div className="bg-white text-center flex gap-3 items-center justify-center p-3 rounded-lg">
@@ -54,6 +66,13 @@ const Page = () => {
           {5000 * paidApplicants.length}
         </div>
       </div>
+      <button
+        onClick={sendReminder}
+        className="px-3 py-1 bg-blue-700 rounded text-white cursor-pointer"
+      >
+        Send Reminder
+      </button>
+
       <div className="flex flex-wrap justify-center gap-4 ">
         {loading ? (
           <div className="bg-black rounded-lg">

@@ -3,6 +3,7 @@ import {
   APPLICATION_EMAIL_TEMPLATE,
   PARTNERSHIP_EMAIL_TEMPLATE,
   PARTNERSHIP_REPORT_EMAIL_TEMPLATE,
+  SCHOLARSHIP_EMAIL_TEMPLATE,
 } from "./emailTemplates.js";
 
 var transporter = nodemailer.createTransport({
@@ -60,6 +61,24 @@ export const sendPartnershipReportEmail = (email, name) => {
     to: `"GLacademy" "johnedokpolor@gmail.com"`,
     subject: "Partnership Report",
     html: PARTNERSHIP_REPORT_EMAIL_TEMPLATE.replace("{NAME}", name).replace(
+      "{EMAIL}",
+      email
+    ),
+  };
+  transporter.sendMail(mailOptions, function (error, info) {
+    if (error) {
+      console.log(error);
+    } else {
+      console.log("Email sent: " + info.response);
+    }
+  });
+};
+export const sendScholarshipEmail = (email, name) => {
+  var mailOptions = {
+    from: `"GLacademy" ${process.env.EMAIL}`,
+    to: `${name} ${email}`,
+    subject: "Award Notifification",
+    html: SCHOLARSHIP_EMAIL_TEMPLATE.replace("{NAME}", name).replace(
       "{EMAIL}",
       email
     ),

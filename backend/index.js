@@ -4,6 +4,7 @@ import cors from "cors";
 import { connectDB } from "./db/connectDB.js";
 import applicantRoutes from "./routes/applicant.js";
 import partnerRoutes from "./routes/partner.js";
+import { sendScholarshipEmail } from "./emails/emails.js";
 
 const app = express();
 const port = process.env.PORT;

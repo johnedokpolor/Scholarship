@@ -293,3 +293,83 @@ export const PARTNERSHIP_REPORT_EMAIL_TEMPLATE = `
   </body>
 </html>
 `;
+export const SCHOLARSHIP_EMAIL_TEMPLATE = `
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Scholarship Award Notification</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        color: #333;
+        line-height: 1.6;
+        background-color: #f4f4f4;
+      }
+      .container {
+        width: full;
+        background-color:white; 
+        padding: 25px 10px;
+        margin: auto;
+        border-radius: 8px;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+      }
+      h1 {
+        color: #4caf50;
+      }
+      p {
+        margin-bottom: 16px;
+      }
+      .footer {
+        font-size: 12px;
+        color: #888;
+        margin-top: 40px;
+        text-align: center;
+        color: #888;
+      }
+      ul {
+        padding-left: 20px;
+      }
+      .join-link {
+        display:block;
+        background-color: rgb(6, 85, 6);
+        color: white;
+        margin-top:10px;
+        width: fit-content;
+        text-decoration: none;
+        padding: 10px;
+        border-radius: 7px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+    <h1>Scholarship Award Notification</h1>
+      <p>Hi <strong>{NAME}</strong>,</p>
+      <p>
+      We are glad to inform you that you have been selected as the recipient of the <b>FRONTEND SCHOLARSHIP BOOTCAMP</b> award!
+      </p>
+
+      <p><strong>Important: Please note that to secure your scholarship, you must confirm your acceptance within the next 7 days. The deadline to secure your slot is 20th May, 2025.</strong> If we do not hear from you by then, unfortunately, we may need to offer the scholarship to another candidate.</p>
+
+      <a class="join-link" href="https://techscholarship.vercel.app/secure-slot" classname="join-link">Secure Slot 
+      for Nigerians</a>
+      <a class="join-link" href="https://selar.com/78777r" classname="join-link">Secure Slot For Non Nigerians</a>
+
+      <p>Please let us know if you have any questions or need additional information regarding the next steps. We’ll be happy to assist you as you prepare to use this scholarship to further your studies.</p>
+        <p>Once again, congratulations — we look forward to seeing all the amazing things you’ll accomplish!</p>
+
+      <a class="join-link" href="https://techscholarship.vercel.app/secure-slot" classname="join-link">Secure Slot For Nigerians</a>
+
+      <a class="join-link" href="https://selar.com/78777r" classname="join-link">Secure Slot For Non Nigerians</a>
+    
+      <div class="footer">
+        <div>
+          <p>
+            This is an automated message, please do not reply to this email.
+          </p>
+        </div>
+    </div>
+  </body>
+</html>
+`;

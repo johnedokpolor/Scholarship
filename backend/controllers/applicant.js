@@ -1,5 +1,16 @@
-import { sendApplicationEmail } from "../emails/emails.js";
+import {
+  sendApplicationEmail,
+  sendScholarshipEmail,
+} from "../emails/emails.js";
 import { Applicant } from "../models/applicant.js";
+
+function chunkArray(array, size) {
+  const result = [];
+  for (let i = 0; i < array.length; i += size) {
+    result.push(array.slice(i, i + size));
+  }
+  return result;
+}
 
 // @desc   Create Applicant
 // @route  POST /api/apply
@@ -80,6 +91,28 @@ const getApplicants = async (req, res) => {
   });
 };
 
+// @desc   Send Scholarship emails
+// @route  GET /api/reminder
+const sendReminder = async (req, res) => {
+  // const { index } = req.body;
+  const applicants = await Applicant.find({});
+  const chuckedApplicants = applicants.map((applicant) => ({
+    name: applicant.name,
+    email: applicant.email,
+  }));
+
+  // chunck the applicants array into arrays of 20 arguments each
+  const chunked = chunkArray(chuckedApplicants, 20);
+  const emailsToSendto = chunked[1];
+  sendScholarshipEmail("johnedokpolor@gmail.com", "John");
+
+  res.status(200).json({
+    success: true,
+    chunckArrayLength: chunked.length,
+    chunckArrays: chunked[1],
+  });
+};
+
 const deleteApplicant = async (req, res) => {
   const { id } = req.params;
   try {
@@ -148,4 +181,5 @@ export {
   deleteApplicant,
   validateApplicant,
   getAderojuApplicant,
+  sendReminder,
 };
