@@ -37,7 +37,7 @@ export default function PaymentCheckout() {
             it to secure your slot.
           </p>
           <button className="px-3 py-2 mt-3 bg-blue-700 rounded text-white cursor-pointer">
-            <Link href="wa.link/va56ad">Contact Us</Link>
+            <Link href="https://wa.link/va56ad">Contact Us</Link>
           </button>
         </div>
       ) : (
@@ -77,13 +77,13 @@ export default function PaymentCheckout() {
                   aria-label="Copy account number"
                 >
                   {copied ? (
-                    <button className="px-2 py-1 bg-green-600 text-white rounded-md">
+                    <div className="px-2 py-1 bg-green-600 text-white rounded-md">
                       Copied!
-                    </button>
+                    </div>
                   ) : (
-                    <button className="px-2 py-1 bg-blue-600 text-white rounded-md">
+                    <div className="px-2 py-1 bg-blue-600 text-white rounded-md">
                       Copy
-                    </button>
+                    </div>
                   )}
                 </button>
               </div>
