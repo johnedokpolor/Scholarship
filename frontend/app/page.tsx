@@ -83,11 +83,14 @@ export default function Home() {
                 <p>
                   Thank you for your interest! Unfortunately, the application
                   period for this cohort has now closed. However, we’d love to
-                  stay in touch — you can add your name to our waiting list to
-                  be among the first to hear when applications open for the next
-                  cohort. <br />
+                  stay in touch — you can join our waiting list to be among the
+                  first to hear when applications open for the next cohort.{" "}
+                  <br />
                   <button className="px-3 py-2 mt-3 bg-blue-700 rounded text-white cursor-pointer">
-                    <Link href="https://chat.whatsapp.com/E2lFh78iYeFDObMT6Z2FH7">
+                    <Link
+                      href="https://chat.whatsapp.com/Et8wiY2GzHw9d4UzWNwAsj
+"
+                    >
                       Join Now
                     </Link>
                   </button>
