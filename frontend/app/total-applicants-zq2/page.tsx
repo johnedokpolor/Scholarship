@@ -6,6 +6,7 @@ import axiosInstance from "@/utils/axiosInstance";
 import Image from "next/image";
 import React, { useEffect, useState } from "react";
 import progress from "../../public/progress.png";
+import toast from "react-hot-toast";
 
 const Page = () => {
   const [applicants, setApplicants] = useState([]);
@@ -39,7 +40,7 @@ const Page = () => {
       const response = await axiosInstance.get("/api/reminder");
       console.log(response.data);
       if (response.status === 200) {
-        alert("Reminder sent successfully");
+        toast.success("Reminder sent successfully");
       }
     } catch (error: any) {
       console.log(error.message);

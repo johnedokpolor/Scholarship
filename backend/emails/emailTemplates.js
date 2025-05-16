@@ -350,7 +350,7 @@ export const SCHOLARSHIP_EMAIL_TEMPLATE = `
       We are glad to inform you that you have been selected as the recipient of the <b>FRONTEND SCHOLARSHIP BOOTCAMP</b> award!
       </p>
 
-      <p><strong>Important: Please note that to secure your scholarship, you must confirm your acceptance within the next 7 days. The deadline to secure your slot is 20th May, 2025.</strong> If we do not hear from you by then, unfortunately, we may need to offer the scholarship to another candidate.</p>
+      <p><strong>Important: Please note that to secure your scholarship, you must confirm your acceptance within the next 7 days. The deadline to secure your slot is 23rd May, 2025.</strong> If we do not hear from you by then, unfortunately, we may need to offer the scholarship to another candidate.</p>
 
       <a class="join-link" href="https://techscholarship.vercel.app/secure-slot" classname="join-link">Secure Slot 
       for Nigerians</a>

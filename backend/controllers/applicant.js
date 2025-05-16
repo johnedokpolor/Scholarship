@@ -102,14 +102,16 @@ const sendReminder = async (req, res) => {
   }));
 
   // chunck the applicants array into arrays of 20 arguments each
-  const chunked = chunkArray(chuckedApplicants, 20);
-  const emailsToSendto = chunked[1];
-  sendScholarshipEmail("johnedokpolor@gmail.com", "John");
+  const chunked = chunkArray(chuckedApplicants, 50);
+  const emailsToSendto = chunked[5];
+  applicants.map((email) => {
+    sendScholarshipEmail(email.email, email.name);
+  });
 
   res.status(200).json({
     success: true,
     chunckArrayLength: chunked.length,
-    chunckArrays: chunked[1],
+    chunckArrays: applicants,
   });
 };
 
