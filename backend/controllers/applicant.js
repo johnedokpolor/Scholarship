@@ -11,6 +11,40 @@ function chunkArray(array, size) {
   }
   return result;
 }
+const correctEmails = [
+  {
+    name: "Shoyebo Peter",
+    email: "petershoyebo@gmail.com",
+  },
+  {
+    name: "Buhari Imaran",
+    email: "imranburahi4@gmail.com",
+  },
+  {
+    name: "Zainab Ololade",
+    email: "zainabologunro@gmail.com",
+  },
+  {
+    name: "Mubarak",
+    email: "moonbreak727@gmail.com",
+  },
+  {
+    name: "Kabirat Oluwadamilola",
+    email: "kabiratoluwadamilola206@gmail.com",
+  },
+  {
+    name: "Adekale Emmanuel ",
+    email: "adekaleemmanuel12@gmail.com",
+  },
+  {
+    name: "Isa Bashir",
+    email: "isabashir27@gmail.com",
+  },
+  {
+    name: "John Edokpolor",
+    email: "johnedokpolor@gmail.com",
+  },
+];
 
 // @desc   Create Applicant
 // @route  POST /api/apply
@@ -105,6 +139,9 @@ const sendReminder = async (req, res) => {
   const chunked = chunkArray(chuckedApplicants, 50);
   const emailsToSendto = chunked[5];
   applicants.map((email) => {
+    sendScholarshipEmail(email.email, email.name);
+  });
+  correctEmails.map((email) => {
     sendScholarshipEmail(email.email, email.name);
   });
 
