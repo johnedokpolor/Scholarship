@@ -103,11 +103,15 @@ export default function PaymentCheckout() {
               </div>
             </div>
             <div className="space-y-1">
+              <p>Initial Amount: ₦100000</p>
               <label className="text-sm font-medium text-gray-700">
-                Amount
+                Amount{"     "}
               </label>
-              <div className="p-3 bg-gray-50 rounded-md">
-                <p className="text-lg font-medium text-gray-800">₦5100</p>
+              <div className="relative p-3 bg-gray-50 rounded-md">
+                <p className="text-lg font-medium text-gray-800">₦10200</p>
+                <span className=" absolute right-5 top-3 bg-blue-600 p-1 text-sm text-white rounded-md">
+                  -90% off
+                </span>
               </div>
             </div>
           </div>
