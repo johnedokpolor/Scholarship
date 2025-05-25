@@ -3,6 +3,7 @@
 import {
   sendPartnershipEmail,
   sendPartnershipReportEmail,
+  sendPaymentConfirmationmail,
 } from "../emails/emails.js";
 import { Partner } from "../models/partner.js";
 
@@ -87,6 +88,35 @@ export const deletePartner = async (req, res) => {
     res
       .status(200)
       .json({ success: true, message: "Partner deleted successfully" });
+  } catch (error) {
+    throw new Error(error.message);
+  }
+};
+
+// @desc   Send Payment Email to All Partners
+// @route  GET /api/payment-confirmation
+export const paymentConfirmationEmail = async (req, res) => {
+  try {
+    // attempt to find partners with amountGenerated greater than 0
+    const partners = await Partner.find({ amountGenerated: { $gt: 0 } });
+
+    // map through the partners and send payment confirmation email
+    partners.forEach((partner) => {
+      const { email, name, referralCode, accountNumber, bankName } = partner;
+      sendPaymentConfirmationmail(
+        email,
+        name,
+        referralCode,
+        accountNumber,
+        bankName
+      );
+    });
+
+    res.status(200).json({
+      success: true,
+      partners,
+      message: "Payment Email Sent Successfully",
+    });
   } catch (error) {
     throw new Error(error.message);
   }

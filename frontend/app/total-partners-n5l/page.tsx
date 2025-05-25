@@ -6,6 +6,7 @@ import Image from "next/image";
 import React, { useEffect, useState } from "react";
 import progress from "../../public/progress.png";
 import PartnerCard from "@/components/PartnerCard";
+import toast from "react-hot-toast";
 
 const Page = () => {
   const [partners, setPartners] = useState([]);
@@ -23,6 +24,17 @@ const Page = () => {
   }, []);
 
   console.log(partners);
+  const sendPaymentEmail = async () => {
+    try {
+      const response = await axiosInstance.get("/api/payment-confirmation");
+      console.log(response.data);
+      if (response.status === 200) {
+        toast.success("Payment Email sent successfully");
+      }
+    } catch (error: any) {
+      console.log(error.message);
+    }
+  };
 
   return (
     <div className="space-y-3">
@@ -31,6 +43,12 @@ const Page = () => {
           <span className="font-bold">No Of Total Partners: </span>
           {partners.length} partners
         </div>
+        <button
+          onClick={sendPaymentEmail}
+          className="px-3 py-1 bg-blue-700 rounded text-white cursor-pointer"
+        >
+          Send Payment Email
+        </button>
       </div>
       <div className="flex flex-wrap justify-center gap-4 ">
         {loading ? (

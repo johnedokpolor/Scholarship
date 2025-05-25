@@ -217,6 +217,82 @@ export const PARTNERSHIP_EMAIL_TEMPLATE = `
   </body>
 </html>
 `;
+export const PAYMENT_CONFIRMATION_EMAIL_TEMPLATE = `
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Payment Confirmation</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        color: #333;
+        line-height: 1.6;
+        background-color: #f4f4f4;
+      }
+      .container {
+        width: full;
+        background-color:white; 
+        padding: 25px 10px;
+        margin: auto;
+        border-radius: 8px;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+      }
+      h1 {
+        color: #4caf50;
+      }
+      p {
+        margin-bottom: 16px;
+      }
+      .footer {
+        font-size: 12px;
+        color: #888;
+        margin-top: 40px;
+        text-align: center;
+        color: #888;
+      }
+      ul {
+        padding-left: 20px;
+      }
+   
+    </style>
+  </head>
+  <body>
+    <div class="container">
+    <h1>Partnership Confirmation 🎉</h1>
+      <p>Hi Partner <strong>{PARTNER}</strong>,</p>
+      <p>
+        ✅ Thank you for referring applicants using your referral code: <strong>{REFERRALCODE}</strong>.
+      </p>
+
+      <p>
+       💳 Payment has been made to the details below:
+      </p>
+      <ul>
+        <li><b>Account Name: </b>{ACCOUNTNAME}</li>
+        <li><b>Account Number: </b>{ACCOUNTNUMBER}</li>
+        <li><b>Bank Name: </b>{BANKNAME}</li>
+      </ul>
+      <p>👍🏻We truly appreciate your support and partnership. Keep up the great work!</p>
+
+      <p>Have any questions? Feel free to contact us.</p>
+
+      <p>
+        Wishing you all the best,
+        <br />
+        GLacademy Team.
+      </p>
+
+      <div class="footer">
+        <div>
+          <p>
+            This is an automated message, please do not reply to this email.
+          </p>
+        </div>
+    </div>
+  </body>
+</html>
+`;
 export const PARTNERSHIP_REPORT_EMAIL_TEMPLATE = `
 <!DOCTYPE html>
 <html>

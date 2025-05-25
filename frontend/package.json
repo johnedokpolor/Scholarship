@@ -1,5 +1,7 @@
 {
-  "name": "frontend",
+  "name": "tech-scholarship-frontend",
+  "description": "Frontend for the Tech Scholarship application",
+  "author": "Jason Dboss ",
   "version": "0.1.0",
   "private": true,
   "scripts": {

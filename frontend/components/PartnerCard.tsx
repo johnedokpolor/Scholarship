@@ -62,6 +62,10 @@ const PartnerCard = ({ partner }: { partner: any }) => {
       <p>
         <span className="font-bold">Reason:</span> {partner.reason}
       </p>
+      <p>
+        <span className="font-bold">Amount Generated:</span> ₦
+        {partner.amountGenerated}
+      </p>
     </div>
   );
 };

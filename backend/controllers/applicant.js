@@ -3,6 +3,7 @@ import {
   sendScholarshipEmail,
 } from "../emails/emails.js";
 import { Applicant } from "../models/applicant.js";
+import { Partner } from "../models/partner.js";
 
 function chunkArray(array, size) {
   const result = [];
@@ -174,6 +175,7 @@ const validateApplicant = async (req, res) => {
   try {
     // attempt to find and validate the Applicant
     const applicant = await Applicant.findOne({ email });
+
     if (!applicant) {
       return res.status(404).json({
         success: false,
@@ -181,6 +183,9 @@ const validateApplicant = async (req, res) => {
           "This email didn't apply for the bootcamp, please try another email.",
       });
     }
+
+    // find the partner that referred the applicant, and number of applicants the partner has referred
+    // Dont forget to add this code later
     if (applicant.paid) {
       return res.status(400).json({
         success: false,
@@ -192,9 +197,10 @@ const validateApplicant = async (req, res) => {
     applicant.save();
 
     // send verification email
-    res
-      .status(200)
-      .json({ success: true, message: "You've been validated successfully" });
+    res.status(200).json({
+      success: true,
+      message: "You've been validated successfully",
+    });
   } catch (error) {
     throw new Error(error.message);
   }

@@ -3,6 +3,7 @@ import {
   APPLICATION_EMAIL_TEMPLATE,
   PARTNERSHIP_EMAIL_TEMPLATE,
   PARTNERSHIP_REPORT_EMAIL_TEMPLATE,
+  PAYMENT_CONFIRMATION_EMAIL_TEMPLATE,
   SCHOLARSHIP_EMAIL_TEMPLATE,
 } from "./emailTemplates.js";
 
@@ -55,6 +56,31 @@ export const sendPartnershipEmail = (
     }
   });
 };
+export const sendPaymentConfirmationmail = (
+  email,
+  name,
+  referralCode,
+  accountNumber,
+  bankName
+) => {
+  var mailOptions = {
+    from: `"GLacademy" ${process.env.EMAIL}`,
+    to: `${name} ${email}`,
+    subject: "Payment Confirmation",
+    html: PAYMENT_CONFIRMATION_EMAIL_TEMPLATE.replace("{PARTNER}", name)
+      .replace("{REFERRALCODE}", referralCode)
+      .replace("{BANKNAME}", bankName)
+      .replace("{ACCOUNTNAME}", name)
+      .replace("{ACCOUNTNUMBER}", accountNumber),
+  };
+  transporter.sendMail(mailOptions, function (error, info) {
+    if (error) {
+      console.log(error);
+    } else {
+      console.log("Email sent: " + info.response);
+    }
+  });
+};
 export const sendPartnershipReportEmail = (email, name) => {
   var mailOptions = {
     from: `"GLacademy" ${process.env.EMAIL}`,
@@ -73,6 +99,7 @@ export const sendPartnershipReportEmail = (email, name) => {
     }
   });
 };
+
 export const sendScholarshipEmail = (email, name) => {
   var mailOptions = {
     from: `"GLacademy" ${process.env.EMAIL}`,

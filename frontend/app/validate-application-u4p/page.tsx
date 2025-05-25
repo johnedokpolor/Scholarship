@@ -14,7 +14,7 @@ const Page = () => {
     setLoading(true);
     try {
       const response = await axiosInstance.patch("/api/validate", { email });
-      console.log(response);
+      console.log(response.data);
       toast.success(response.data.message);
       setEmail("");
       setLoading(false);
