@@ -222,3 +222,6 @@ export {
   getAderojuApplicant,
   sendReminder,
 };
+
+// Set isAdmin: true for all users
+// await User.updateMany({}, { $set: { isAdmin: true } });

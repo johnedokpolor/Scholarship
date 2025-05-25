@@ -1,6 +1,9 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
+"use client";
 import axiosInstance from "@/utils/axiosInstance";
 import toast from "react-hot-toast";
+import { useRouter } from "next/navigation";
+import { MdDelete, MdEdit } from "react-icons/md";
 
 const ApplicantCard = ({
   applicant,
@@ -9,6 +12,7 @@ const ApplicantCard = ({
   applicant: any;
   total?: boolean;
 }) => {
+  const router = useRouter();
   const deleteApplicant = async () => {
     try {
       const response = await axiosInstance.delete(
@@ -17,6 +21,7 @@ const ApplicantCard = ({
       console.log(response.data);
       toast.success("Applicant deleted successfully");
       window.location.href = "/total-applicants-zq2";
+      router.refresh();
     } catch (error: any) {
       console.log(error.message);
     }
@@ -27,12 +32,14 @@ const ApplicantCard = ({
       className="bg-white relative max-w-md w-[90%] space-y-3 rounded-md p-5"
     >
       {total && (
-        <button
-          onClick={deleteApplicant}
-          className="bg-red-600 text-white absolute top-3 right-3 text-sm  cursor-pointer py-1 rounded-md px-3"
-        >
-          Delete
-        </button>
+        <div className="flex gap-2 absolute top-2 right-2">
+          <div className="bg-blue-500 p-2  text-xl text-white rounded-md  cursor-pointer">
+            <MdEdit className="   " />
+          </div>
+          <div className="bg-red-500 p-2  text-xl text-white rounded-md  cursor-pointer">
+            <MdDelete onClick={deleteApplicant} className="   " />
+          </div>
+        </div>
       )}
 
       <p>

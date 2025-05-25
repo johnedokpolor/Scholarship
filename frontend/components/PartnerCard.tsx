@@ -1,9 +1,14 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-
+"use client";
 import axiosInstance from "@/utils/axiosInstance";
+import { useRouter } from "next/navigation";
 import toast from "react-hot-toast";
+import { MdDelete, MdEdit } from "react-icons/md";
 
 const PartnerCard = ({ partner }: { partner: any }) => {
+  const router = useRouter();
+
+  // Function to delete a partner
   const deletePartner = async () => {
     try {
       const response = await axiosInstance.delete(
@@ -11,7 +16,7 @@ const PartnerCard = ({ partner }: { partner: any }) => {
       );
       console.log(response.data);
       toast.success("Partner deleted successfully");
-      window.location.href = "/total-partners-n5l";
+      router.refresh();
     } catch (error: any) {
       console.log(error.message);
     }
@@ -21,12 +26,14 @@ const PartnerCard = ({ partner }: { partner: any }) => {
       key={partner._id}
       className="bg-white relative w-[90%] max-w-md  space-y-3 rounded-md p-5 pt-5"
     >
-      <button
-        onClick={deletePartner}
-        className="bg-red-600 text-white absolute top-3 right-3 text-sm  cursor-pointer py-1 rounded-md px-3"
-      >
-        Delete
-      </button>
+      <div className="flex gap-2 absolute top-2 right-2">
+        <div className="bg-blue-500 p-2  text-xl text-white rounded-md  cursor-pointer">
+          <MdEdit className="   " />
+        </div>
+        <div className="bg-red-500 p-2  text-xl text-white rounded-md  cursor-pointer">
+          <MdDelete onClick={deletePartner} className="   " />
+        </div>
+      </div>
       <p>
         <span className="font-bold">Id:</span> {partner._id}
       </p>
