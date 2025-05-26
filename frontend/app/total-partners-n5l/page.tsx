@@ -36,6 +36,8 @@ const Page = () => {
     }
   };
 
+  partners.sort((a: any, b: any) => b.amountGenerated - a.amountGenerated);
+
   return (
     <div className="space-y-3">
       <div className="bg-white text-center flex gap-3 items-center justify-center p-3 rounded-lg">

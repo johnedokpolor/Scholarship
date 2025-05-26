@@ -175,6 +175,7 @@ const validateApplicant = async (req, res) => {
   try {
     // attempt to find and validate the Applicant
     const applicant = await Applicant.findOne({ email });
+    // const partner = await Partner.findOne({ email });
 
     if (!applicant) {
       return res.status(404).json({
@@ -183,7 +184,8 @@ const validateApplicant = async (req, res) => {
           "This email didn't apply for the bootcamp, please try another email.",
       });
     }
-
+    // partner.amountGenerated = 250; //
+    // partner.save(); // save the partner with the updated amountGenerated
     // find the partner that referred the applicant, and number of applicants the partner has referred
     // Dont forget to add this code later
     if (applicant.paid) {
@@ -200,6 +202,7 @@ const validateApplicant = async (req, res) => {
     res.status(200).json({
       success: true,
       message: "You've been validated successfully",
+      // partner,
     });
   } catch (error) {
     throw new Error(error.message);
